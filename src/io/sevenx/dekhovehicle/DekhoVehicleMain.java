@@ -1,14 +1,27 @@
 package io.sevenx.dekhovehicle;
-import java.util.ArrayList;
+
+import java.sql.SQLException;
+
 import java.util.List;
+
 
 import io.sevenx.dekhovehicle.data.Bike;
 import io.sevenx.dekhovehicle.data.Car;
 import io.sevenx.dekhovehicle.data.Vehicle;
+import io.sevenx.dekhovehicle.database.VehicleDataBase;
 import io.sevenx.dekhovehicle.display.VehicleDisplay;
+import io.sevenx.dekhovehicle.xml.VehicleXml;
+
 
 public class DekhoVehicleMain {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException{
+		
+	
+		String path="file:home\\tushar\\eclipse-workspace\\DekhoVehicle2\\src\\io\\sevenx\\dekhovehicle\\xml\\vehicle.xml";
+		List<Vehicle> vehicle=VehicleXml.parser(path);
+		VehicleDataBase.valueInDataBase(vehicle);
+		List<Vehicle> vehicleList=VehicleDataBase.extractFromDataBase();
+		VehicleDisplay.display(vehicleList);
 		Bike bike = new Bike();
 		bike.setBrand("Royal Enfild");
 		bike.setModel("Continental GT");
@@ -34,15 +47,15 @@ public class DekhoVehicleMain {
 		car.setMaximumSpeed(150);
 		
 		car.setPower(2000);
-		
-		List<Vehicle> vehicle=new ArrayList<Vehicle>();
+		System.out.println("Output Of tostring");
+		System.out.println("*********************************************");
+		System.out.println(car);
+		System.out.println(bike);
+		System.out.println("**********************************************");
+		/*List<Vehicle> vehicle=new ArrayList<Vehicle>();
 		vehicle.add(bike);
 		vehicle.add(car);
-		VehicleDisplay.display(vehicle);
-		
-		
-	
-		
+		VehicleDisplay.display(vehicle);*/
 		
 	}
 	

@@ -1,6 +1,14 @@
 package io.sevenx.dekhovehicle.data;
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 
 public class Vehicle {
+	@Override
+	public String toString() {
+		return "Vehicle [brand=" + brand + ", model=" + model + ", color=" + color + ", fuel=" + fuel + ", mileage="
+				+ mileage + ", bodyType=" + bodyType + ", transmission=" + transmission + ", brake=" + brake
+				+ ", maximumSpeed=" + maximumSpeed  + "]";
+	}
 	private String brand;
 	private String model;
 	private String color;
